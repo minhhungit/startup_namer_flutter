@@ -24,30 +24,113 @@ class RandomWordsState extends State<RandomWords> {
   Widget _buildRow(WordPair pair) {
     final bool alreadySaved = savedGlobal.contains(pair);
 
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
+    return Container(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Container(
+                width: 100,
+                height: 100,
+                // decoration: new BoxDecoration(
+                //   border: Border.all(
+                //     width: 1,
+                //     color: Colors.grey[300]
+                //   ),
+                //   borderRadius: new BorderRadius.all(const Radius.circular(10))
+                // ),
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'assets/news-placeholder.png',
+                  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkea-Mp_zvy1whxsQn9Msc032o7dOOOl0QhwO5SWXWNVkDhudW'// 'https://picsum.photos/250?image=9'
+                ),
+              )              
+            ],
+          ), 
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  child: Container(
+                    child: Text(
+                      '5 Minutes to RedisInsight running on àầ ầgfdh ...',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16.0,
+                        fontFamily: 'LiuJianMaoCao',
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  )
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 10, top: 10),
+                  padding: const EdgeInsets.all(2),
+                  decoration: new BoxDecoration(
+                    //color: Colors.purple,
+                    border: Border.all(
+                      width: 1,
+                      color: Colors.blue[300]
+                    ),
+                    borderRadius: new BorderRadius.all(const Radius.circular(5))
+                  ),
+                  child: Text(
+                    "Hello world",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 12
+                    ),
+                  )
+                ),
+            ])
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              IconButton(
+              icon: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border),
+              color: alreadySaved ? Colors.red : null,
+              onPressed: () {
+                  setState(() {
+                    if (alreadySaved) {
+                      savedGlobal.remove(pair);
+                    } else {
+                      savedGlobal.add(pair);
+                    }
+                  });
+                },
+              ),
+            ],
+          )
+        ],
       ),
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-      ),
-      onTap: () {
-        setState(() {
-          if (alreadySaved) {
-            savedGlobal.remove(pair);
-          } else {
-            savedGlobal.add(pair);
-          }
-        });
-      },
     );
+
+    // title: Text(
+      //   pair.asPascalCase,
+      //   style: _biggerFont,
+      // ),
+      // trailing: Icon(
+      //   alreadySaved ? Icons.favorite : Icons.favorite_border,
+      //   color: alreadySaved ? Colors.red : null,
+      // ),
+      // onTap: () {
+      //   setState(() {
+      //     if (alreadySaved) {
+      //       savedGlobal.remove(pair);
+      //     } else {
+      //       savedGlobal.add(pair);
+      //     }
+      //   });
+      //},
   }
 
   Widget _buildSuggestions() {
     return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
         itemBuilder: (context, i) {
           if (i.isOdd) return Divider();
 
@@ -61,6 +144,36 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
+    if (savedGlobal == null || savedGlobal.length == 0){
+      showDialog<void>(
+          context: context,
+          barrierDismissible: false, // user must tap button!
+          builder: (BuildContext context) {
+            return AlertDialog(
+              //title: Text('No data'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    Text('Please choose at least one item.'),
+                    Text('Thank you!'),
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Okay'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+
+      return;
+    }
+
     Navigator.of(context)
         .push(MaterialPageRoute<void>(builder: (BuildContext context) {
 
@@ -107,24 +220,10 @@ class RandomWordsState extends State<RandomWords> {
                 setState(() {
                   savedGlobal.remove(item);
                 });
-              }),
+              })
             );
-          },
-        ),
-        // body: ListView.builder(
-        //     itemCount: _saved.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return Dismissible(
-        //           key: Key(currentPair.toString()),
-        //           onDismissed: (direction) {
-        //             print(index);
-        //             print(currentPair);
-        //             // setState(() {
-
-        //             // });
-        //           },
-        //           child: Container());
-        //     }),
+          }
+        )
       );
     }));
   }
