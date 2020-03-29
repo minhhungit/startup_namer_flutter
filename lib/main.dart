@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
 class RandomWordsState extends State<RandomWords> {
   int perPage = 10;
   int curSeek = 0;
+  int tempData = 0;
 
   final _biggerFont = const TextStyle(fontSize: 18.0);
   var items = List<String>();
@@ -41,6 +42,7 @@ class RandomWordsState extends State<RandomWords> {
     setState(() {
       items.addAll(_fakeDatabase.getRange(curSeek, curSeek + perPage));
       curSeek = curSeek + perPage;
+      tempData = 0;
     });
   }
 
@@ -135,14 +137,7 @@ class RandomWordsState extends State<RandomWords> {
           ],
         ),
         Container(
-          child: Stack(         
-            children: <Widget>[
-              Divider(
-                color: Colors.grey[400]
-              )
-            ]
-          )
-        )
+            child: Stack(children: <Widget>[Divider(color: Colors.grey[400])]))
       ]),
     );
 
@@ -290,6 +285,17 @@ class RandomWordsState extends State<RandomWords> {
       appBar: AppBar(
         title: Text('Startup Name Generator'),
         actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.terrain),
+              onPressed: () => {
+                    setState(() {
+                      tempData++;
+                    })
+                  }),
+          Icon(
+            Icons.play_arrow,
+            color: tempData.isOdd ? Colors.red : Colors.blue,
+          ),
           IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
         ],
       ),
