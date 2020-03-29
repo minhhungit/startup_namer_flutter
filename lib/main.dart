@@ -32,18 +32,22 @@ class RandomWordsState extends State<RandomWords> {
           Column(
             children: <Widget>[
               Container(
-                width: 100,
-                height: 100,
-                // decoration: new BoxDecoration(
-                //   border: Border.all(
-                //     width: 1,
-                //     color: Colors.grey[300]
-                //   ),
-                //   borderRadius: new BorderRadius.all(const Radius.circular(10))
-                // ),
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'assets/news-placeholder.png',
-                  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkea-Mp_zvy1whxsQn9Msc032o7dOOOl0QhwO5SWXWNVkDhudW'// 'https://picsum.photos/250?image=9'
+                margin: const EdgeInsets.only(left: 0, top: 2),
+                constraints: new BoxConstraints(
+                  maxHeight: 100,
+                  maxWidth: 100
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/news-placeholder.png',
+                    //image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkea-Mp_zvy1whxsQn9Msc032o7dOOOl0QhwO5SWXWNVkDhudW',// 'https://picsum.photos/250?image=9'
+                    //image: 'https://i.kym-cdn.com/photos/images/facebook/001/295/524/cda.jpg',
+                    image: 'https://iweb.tatthanh.com.vn/pic/3/blog/chu-long-dep.JPG',
+                    fit: BoxFit.cover,
+                    width: 100,
+                    height: 100,
+                  ),
                 ),
               )              
             ],
@@ -53,22 +57,32 @@ class RandomWordsState extends State<RandomWords> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  margin: const EdgeInsets.only(left: 10),
+                  // decoration: new BoxDecoration(
+                  //   border: Border.all(
+                  //     width: 1,
+                  //     color: Colors.grey[300]
+                  //   ),
+                  // ),
+                  margin: const EdgeInsets.only(left: 10, bottom: 5),
                   child: Container(
+                    constraints: new BoxConstraints(
+                      minHeight: 72.0                          
+                    ),
                     child: Text(
-                      '5 Minutes to RedisInsight running on àầ ầgfdh ...',
+                      pair.asPascalCase.length % 2 == 0 ? '5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world ' : 'ưpưpjwp ưpẹ pưegpjw á akfá;f a;sfa f  epg ựgưe ưgj ưpgwgư',
                       style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 16.0,
-                        fontFamily: 'LiuJianMaoCao',
+                        color: Colors.grey[500],
+                        fontSize: 13.0,
+                        //fontFamily: 'LiuJianMaoCao',
                         fontWeight: FontWeight.bold
                       ),
                     ),
                   )
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 10, top: 10),
+                  margin: const EdgeInsets.only(left: 10.0),
                   padding: const EdgeInsets.all(2),
+                  height: 20,
                   decoration: new BoxDecoration(
                     //color: Colors.purple,
                     border: Border.all(
