@@ -58,19 +58,48 @@ class RandomWordsState extends State<RandomWords> {
               children: <Widget>[
                 Container(
                   margin: const EdgeInsets.only(left: 0, top: 2),
-                  constraints:
-                      new BoxConstraints(maxHeight: 100, maxWidth: 100),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: FadeInImage.assetNetwork(
-                      placeholder: 'assets/news-placeholder.png',
-                      //image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkea-Mp_zvy1whxsQn9Msc032o7dOOOl0QhwO5SWXWNVkDhudW',// 'https://picsum.photos/250?image=9'
-                      //image: 'https://i.kym-cdn.com/photos/images/facebook/001/295/524/cda.jpg',
-                      image:
-                          'https://iweb.tatthanh.com.vn/pic/3/blog/chu-long-dep.JPG',
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 100,
+                  // decoration: new BoxDecoration(
+                  //   border: Border.all(
+                  //     width: 1,
+                  //     color: Colors.grey[300]
+                  //   ),
+                  //   borderRadius: new BorderRadius.only(
+                  //     topLeft: Radius.circular(20),
+                  //     bottomRight: Radius.circular(20)
+                  //   )
+                  // ),
+                  child: Padding(
+                    //padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(0),
+                    child: Stack(
+                      children: <Widget>[
+                        Container(                        
+                          //color: Colors.blue, 
+                          width: 100, 
+                          height: 100),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          // bottom: -50,
+                          // right: -50,
+                          child: Container(
+                            //color: Colors.yellow, 
+                            width: 100, 
+                            //height: 100,
+                            child: FadeInImage.assetNetwork(
+                              placeholder: 'assets/news-placeholder.png',
+                              //image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkea-Mp_zvy1whxsQn9Msc032o7dOOOl0QhwO5SWXWNVkDhudW',// 'https://picsum.photos/250?image=9'
+                              //image: 'https://i.kym-cdn.com/photos/images/facebook/001/295/524/cda.jpg',
+                              image: 'https://iweb.tatthanh.com.vn/pic/3/blog/chu-long-dep.JPG',
+                              //image: 'https://openimagedenoise.github.io/images/moana_16spp_oidn.jpg',
+                              fit: BoxFit.fitWidth,
+                              width: 100,
+                              //height: 100,
+                            ),
+                          )
+                        ),
+                      ],
+                      overflow: Overflow.clip,
                     ),
                   ),
                 )
@@ -89,7 +118,7 @@ class RandomWordsState extends State<RandomWords> {
                       // ),
                       margin: const EdgeInsets.only(left: 10, bottom: 5),
                       child: Container(
-                        constraints: new BoxConstraints(minHeight: 72.0),
+                        constraints: new BoxConstraints(minHeight: 78.0),
                         child: Text(
                           pair.length % 2 == 0
                               ? '${pair} > 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world '
