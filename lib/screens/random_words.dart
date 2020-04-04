@@ -1,19 +1,24 @@
+import 'dart:math';
+
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 int tmpIndex = 0;
-final _fakeDatabase = generateWordPairs().take(100).map((WordPair x) {
+final _fakeDatabase = generateWordPairs().take(35).map((WordPair x) {
   tmpIndex++;
   return '${tmpIndex.toString()}. ${x.asPascalCase}';
 }).toList();
 Set<String> savedGlobal = new Set<String>();
+List<String> _titles = [
+  "Scraping Executive Bios From Company Sites With Python",
+  "JavaScript Algorithm: Remove the Final Exclamation Mark",
+  "F# Weekly #14, 2020 – .NET 5.0 Preview 2 & tasks and resumable state machines in the F# compiler",
+  "Presentation: From POC to Production in Minimal Time - Avoiding Pain in ML Projects",
+  "Enabling Remote Learning with Office 365 Education | Premier Developer",
+  "Working with Dates in Dart"
+];
 
 class RandomWords extends StatefulWidget {
-  final items = generateWordPairs()
-      .take(10000)
-      .map((WordPair x) => x.asPascalCase)
-      .toList();
-
   @override
   State<StatefulWidget> createState() => RandomWordsState();
 }
@@ -110,14 +115,14 @@ class RandomWordsState extends State<RandomWords> {
                       child: Container(
                         constraints: new BoxConstraints(minHeight: 78.0),
                         child: Text(
-                          pair.length % 2 == 0
-                              ? '${pair} > 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world 5 Minutes to RedisInsight running on hello world '
-                              : '${pair} > ưpưpjwp ưpẹ pưegpjw á akfá;f a;sfa f  epg ựgưe ưgj ưpgwgư',
+                          "${pair}. ${_titles[new Random().nextInt(_titles.length)]}",
                           style: TextStyle(
-                              color: Colors.grey[500],
-                              fontSize: 13.0,
-                              //fontFamily: 'LiuJianMaoCao',
-                              fontWeight: FontWeight.bold),
+                            color: Colors.grey[500],
+                            fontSize: 14.0,
+                            //fontFamily: 'LiuJianMaoCao',
+                            //fontWeight: FontWeight.bold,
+                          ),
+                          //textAlign: TextAlign.justify,
                         ),
                       )),
                   Container(
@@ -130,7 +135,7 @@ class RandomWordsState extends State<RandomWords> {
                           borderRadius:
                               new BorderRadius.all(const Radius.circular(5))),
                       child: Text(
-                        "Hello world",
+                        "Hello != world",
                         style: TextStyle(color: Colors.blue, fontSize: 12),
                       )),
                 ])),

@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         title: 'Startup Name Generator',
         theme: ThemeData(
           primaryColor: Colors.white,
+          fontFamily: 'CascadiaCode',
         ),
         home: SplashScreen(),
         routes: <String, WidgetBuilder> {
