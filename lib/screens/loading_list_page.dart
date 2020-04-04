@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:startup_namer/screens/random_words_v2.dart';
 import 'random_words.dart';
 
 class LoadingListPage extends StatefulWidget {
@@ -97,7 +98,7 @@ class _LoadingListPageState extends State<LoadingListPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RandomWords())
+                      MaterialPageRoute(builder: (context) => RandomWordsV2())
                     );
                   },
                   child: Text(
