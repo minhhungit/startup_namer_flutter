@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:startup_namer/screens/loading_list_page.dart';
 import 'package:startup_namer/screens/random_words.dart';
 import 'package:startup_namer/screens/splash_screen.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         home: SplashScreen(),
         routes: <String, WidgetBuilder> {
         '/home': (BuildContext context) => new RandomWords(),
+        '/demoshimmer': (BuildContext context) => new LoadingListPage()
       },
     );
   }

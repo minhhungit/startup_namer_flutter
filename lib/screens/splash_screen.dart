@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:startup_namer/main.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -34,7 +35,8 @@ class SplashScreen extends StatelessWidget {
     await new Future.delayed(const Duration(seconds: 2));
     print("background job completed!!!");
 
-    Navigator.pushReplacementNamed(context, '/home');
+    //Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/demoshimmer');
   }
 
   // void fetchSomething() async {
