@@ -83,7 +83,7 @@ class RandomWordsStateV2 extends State<RandomWordsV2> {
                           topRight: Radius.circular(20),
                         ),
                         child: FadeInImage.assetNetwork(
-                          placeholder: 'assets/news-placeholder.png',
+                          placeholder: 'assets/images/loading-2.gif',
                           image: _imageCover[new Random().nextInt(_imageCover.length)],
                           fit: BoxFit.fitWidth,
                           //width: 100,
